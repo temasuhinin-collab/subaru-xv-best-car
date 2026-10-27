@@ -1,0 +1,33 @@
+{
+  "name": "subaru-xv-best-car",
+  "version": "1.0.0",
+  "description": "Небольшое приложение про Subaru XV 2018",
+  "main": "main.js",
+  "author": "Artem Sukhinin",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win portable"
+  },
+  "devDependencies": {
+    "electron": "33.2.1",
+    "electron-builder": "25.1.8"
+  },
+  "build": {
+    "appId": "ru.artem.subaruxv",
+    "productName": "Subaru XV - Лучшая машина",
+    "asar": true,
+    "files": [
+      "main.js",
+      "index.html",
+      "assets/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "portable"
+      ],
+      "artifactName": "Subaru-XV-Best-Car-${version}.${ext}"
+    }
+  }
+}

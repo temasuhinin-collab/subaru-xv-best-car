@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subaru XV — лучшая машина</title>
+<style>
+:root { color-scheme: dark; font-family: "Segoe UI", Arial, sans-serif; }
+* { box-sizing: border-box; }
+body { margin:0; min-height:100vh; display:grid; place-items:center; padding:24px; background:radial-gradient(ellipse at top,#173a5b 0%,#08111d 65%); color:#fff; }
+.app { width:min(1100px,100%); }
+.header { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:18px; }
+.brand { font-size:13px; letter-spacing:.22em; text-transform:uppercase; color:#9dbbd5; }
+.year { border:1px solid #315779; border-radius:999px; padding:8px 13px; color:#d7e9f8; font-size:12px; }
+h1 { font-size:clamp(28px,4vw,46px); line-height:1.05; margin:0 0 8px; letter-spacing:-.04em; }
+.subtitle { color:#9db0c3; margin:0 0 22px; }
+.photo-wrap { position:relative; overflow:hidden; border-radius:22px; border:1px solid #31506c; background:#101e2b; box-shadow:0 25px 80px #0008; cursor:pointer; outline:none; }
+.photo-wrap:focus-visible { outline:3px solid #54adff; outline-offset:4px; }
+.photo { display:block; width:100%; aspect-ratio:16/9; object-fit:cover; transition:transform .55s ease,filter .4s ease; }
+.photo-wrap:hover .photo { transform:scale(1.025); }
+.shade { position:absolute; inset:35% 0 0; background:linear-gradient(transparent,#020812d9); pointer-events:none; }
+.hint { position:absolute; bottom:22px; left:50%; transform:translateX(-50%); width:max-content; max-width:90%; padding:12px 18px; border-radius:999px; background:#06101ccc; border:1px solid #ffffff35; color:#e5f3ff; font-size:14px; backdrop-filter:blur(10px); text-align:center; transition:opacity .25s; }
+.message { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:24px; text-align:center; background:#03101dbd; opacity:0; transition:opacity .28s ease; pointer-events:none; }
+.message span { max-width:850px; color:#fff; font-size:clamp(28px,5vw,64px); font-weight:900; line-height:1.08; letter-spacing:-.035em; text-shadow:0 5px 35px #168bffb3; }
+.photo-wrap.revealed .message { opacity:1; }
+.photo-wrap.revealed .hint { opacity:0; }
+.footer { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-top:16px; color:#6f8ca7; font-size:12px; }
+@media (prefers-reduced-motion: reduce) { * { transition:none !important; } }
+</style></head>
+<body><main class="app">
+<div class="header"><div class="brand">Subaru · Symmetrical AWD</div><div class="year">XV · 2018</div></div>
+<h1>Есть машины.<br>А есть Subaru.</h1><p class="subtitle">Нажми на фотографию — и всё станет ясно.</p>
+<div class="photo-wrap" id="car" role="button" tabindex="0" aria-label="Показать надпись о Subaru XV">
+<img class="photo" src="assets/subaru-xv-2018.png" alt="Синяя Subaru XV 2018 на фоне гор"><div class="shade"></div>
+<div class="hint">↗ Нажми на изображение</div><div class="message" aria-live="polite"><span>ЭТО ЛУЧШАЯ МАШИНА В МИРЕ</span></div>
+</div><div class="footer"><span>Сделано для настоящих поклонников Subaru</span><span>Нажми ещё раз, чтобы скрыть надпись</span></div>
+</main><script>
+const car = document.getElementById('car');
+function toggleMessage() { car.classList.toggle('revealed'); }
+car.addEventListener('click', toggleMessage);
+car.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggleMessage(); }
+});
+</script></body></html>
